@@ -23,15 +23,14 @@
             <div class="center">
                 <h2 class="form-title" id="login"><span>or</span>Log in</h2>
                 <div class="form-holder">
-                    <input type="email" class="input" placeholder="Email" />
-                    <input type="password" class="input" placeholder="Password" />
+                    <input type="email" class="input" id="logEmail" placeholder="Email" />
+                    <input type="password" class="input" id="logPass" placeholder="Password" />
                 </div>
-                <button class="submit-btn">Log in</button>
+                <button class="submit-btn" onclick="getLocalStorageBtn()">Log in</button>
             </div>
         </form>
     </div>
      
-    <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
     <script src="./script.js"></script>
 
 </body>
