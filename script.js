@@ -1,4 +1,4 @@
-console.clear();
+// console.clear();
 
 const loginBtn = document.getElementById("login");
 const signupBtn = document.getElementById("signup");
@@ -27,3 +27,23 @@ signupBtn.addEventListener("click", (e) => {
 	});
 });
 
+    /* 1.	При реєстрації дані попадають в localStorage. 
+    Перед добавленням нового користувача провіряємо 
+    чи нема у нас вже користувача з такою поштою, 
+    якщо є то не добавляти його. 
+    Всі дані мають валідуватися регулярними виразами. */
+
+
+function setLocalStorageBtn(){
+    email = document.getElementById('email').value;
+    pass = document.getElementById('password').value;
+    
+    for(let i=0; i<localStorage.length; i++){
+        if (localStorage.key(i) == email)
+            alert('This email is already exist');
+        else localStorage.setItem(email, pass);
+    }
+
+    // localStorage.clear();
+
+}
