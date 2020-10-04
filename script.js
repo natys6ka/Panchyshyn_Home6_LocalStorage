@@ -34,27 +34,21 @@ signupBtn.addEventListener("click", (e) => {
     Всі дані мають валідуватися регулярними виразами. */
 
 function setLocalStorageBtn(){
-    email = document.getElementById('email').value;
-    pass = document.getElementById('password').value;
-    // first = document.getElementById('firstName').value;
-    // second = document.getElementById('lastName').value;
-
+    let email = document.getElementById('email').value;
+    let pass = document.getElementById('password').value;
     let person = {
         first : document.getElementById('firstName').value,
         last : document.getElementById('lastName').value,
         email : email,
         pass : pass
     }
-    // alert(JSON.stringify(person));
-  
-    for(let i=0; i<localStorage.length; i++){
+      for(let i=0; i<localStorage.length; i++){
         if (localStorage.key(i) == email)
             alert('This email is already exist');
         else {
             localStorage.setItem(email, JSON.stringify(person));
         } 
     }
-
     // localStorage.clear();
 }
 
@@ -72,14 +66,26 @@ function getLocalStorageBtn(){
     let logEmail = document.getElementById('logEmail').value;
     let logPass = document.getElementById('logPass').value;
     let neww = JSON.parse(localStorage.getItem(logEmail));
-    // alert(neww.pass);
 
+    let index = -5;
     for(let i=0; i<localStorage.length; i++){
         if ((localStorage.key(i) == logEmail) & (logPass == neww.pass)) {
-            alert('true'); ///////////////////
+            index = i;
         }
-        else alert('Incorrect email or password');
     }
+    if (index >= 0) {
+        alert('true'); ///////////////////
+        createProfile(neww);
+    }
+    else alert('Incorrect email or password');
+}
 
-
+function createProfile(info){
+    let profile = document.getElementById('profile');
+    profile.hidden = false;
+    profile.style.visibility = 'visible';
+    document.getElementById('emailing').textContent = info.email;
+    document.getElementById('naming').textContent = info.first + ' ' + info.last;
+    // document.getElementsByClassName('form-structor').style.visibility = 'hidden';
+    // profile.style.zIndex = 6;
 }
